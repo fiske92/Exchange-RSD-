@@ -13,14 +13,16 @@ let changeConverterStatus = true;
 
 outputEur.disabled = true;
 outputEur.classList.add("cursor-not-allowed");
+
+// exchange rate color changer
 setInterval(exchangeRateColor, 1000);
 
 // backdrop close
-
 backdrop[0].addEventListener('click',()=>{
     closeBackdrop()
 })
 
+// set new exchange rate
 btnNewExchangeRate.addEventListener('click',()=>{
     if (exchangeRateInput.value == '') {
         exchangeRateInputAlert.innerText = 'Please enter the rate'
@@ -46,6 +48,8 @@ outputEur.addEventListener("input", () => {
   inputRsd.value = parseFloat(inputRsd.value) // deletes unnecessary zeros
 });
 
+
+// Exchange changer
 changeConverter.addEventListener("click", () => {
   if (changeConverterStatus === false) {
     changeConverter.innerText = "€ in RSD";
@@ -68,6 +72,8 @@ changeConverter.addEventListener("click", () => {
   }
 });
 
+
+// Button for editing the rate, and backdrop visibility change
 editExchangeRate.addEventListener('click', () => {
     exchangeRateInputAlert.innerText = ''
     exchangeRateInput.value = ''
@@ -83,6 +89,8 @@ function changeAndResetConverter(status) {
   outputEur.disabled = (!status);
   changeConverterStatus = (!status);
 }
+
+// Exchange rate color changer (for setInterval)
 function exchangeRateColor() {
     if (kurs.contains("text-white")) {
         kurs.remove("text-white");
@@ -98,6 +106,7 @@ function exchangeRateColor() {
         kurs.add("text-white");
       }
 }
+
 function closeBackdrop() {
     backdrop[0].classList.add('invisible')
     backdrop[1].classList.add('invisible')
