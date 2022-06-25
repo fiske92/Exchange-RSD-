@@ -1,0 +1,41 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Konverter</title>
+  </head>
+  <body>
+    <div class="absolute opacity-50 w-full h-full bg-sky-900 invisible">
+    </div>
+    <div class="border-2 border-white absolute left-[50%] translate-x-[-50%] top-[40%] translate-y-[-50%] bg-lime-400 w-fit h-fit z-[10] p-10 invisible">
+      <h1 class="text-xl text-sky-600 font-medium">Please enter current exchange rate (1€ = ?)</h1>
+      <span id="exchange-rate-alert" class="block text-center text-red-500 text-sm font-medium"></span>
+      <div class="flex justify-center items-center">
+        <input id="exchange-rate-input" type="number" class="py-2 px-2 rounded-md  mt-5">
+        <button id="btn-new-exchange-rate" class="mt-5 border border-white px-2 py-1.5 rounded-md ml-2 text-sky-600 font-medium hover:bg-lime-300 transition">Apply</button>
+      </div>
+    </div>
+
+    <main class="w-full h-full bg-lime-100/50 pt-5">
+      <div class="w-[450px] h-fit bg-sky-500 m-auto mt-20 rounded-md shadow-xl flex flex-col items-center justify-evenly hover:shadow-2xl transition-all">
+        <h1 class="text-center text-2xl text-white">Converter (RSD <=> €)</h1>
+        <h3 id="trenutni-kurs" class="text-white font-medium">Exchange rate : 1 € = <span id="exchange-rate">117.6</span> rsd</h3>
+        <button id="edit-exchange-rate" class="text-white border-2 border-white rounded-md px-2 bg-lime-200 text-sky-500 font-medium py-0.5 mt-2 hover:bg-lime-300 transition">Edit exchange rate</button>
+        <div  id="container" class="border-2 px-3 flex justify-center items-center flex-col my-4">
+            <div id="first-input-div" class="m-auto flex justify-center items-center py-5">
+                <label for="input-rsd" class="text-white font-bold" id="first-label">RSD</label>
+                <input type="number" name="" id="input-rsd" class=" bg-white ml-3 px-2 py-1 rounded-md focus-within:shadow-lg focus:outline-none" placeholder="Enter amount in RSD"/>
+            </div>
+            <button id="btn-change-converter" class="text-sky-500 font-bold rounded-full p-2 bg-lime-200 hover:bg-lime-300 transition-all border-2 border-white">€ u RSD</button>
+            <div id='second-input-div' class="m-auto flex justify-center items-center w-full py-5">
+                <label for="output-eur" class="text-white font-bold" id="second-label">EUR</label>
+                <input type="number" id="output-eur" class="ml-3 px-2 py-1 rounded-md bg-white" placeholder="Amount of RSD in EUR" disabled/>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
