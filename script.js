@@ -10,6 +10,7 @@ const changeConverter = document.getElementById("btn-change-converter");
 const editExchangeRate = document.getElementById('edit-exchange-rate')
 const btnNewExchangeRate = document.getElementById('btn-new-exchange-rate')
 let changeConverterStatus = true;
+let currentRate = []
 
 outputEur.disabled = true;
 outputEur.classList.add("cursor-not-allowed");
@@ -61,7 +62,7 @@ changeConverter.addEventListener("click", () => {
     inputRsd.classList.remove("cursor-not-allowed");
     changeAndResetConverter(false)
   } else {
-    changeConverter.innerText = "RSD u €";
+    changeConverter.innerText = "RSD in €";
     changeConverter.style.transform = "rotate(-360deg)";
     inputContainer.classList.add("flex-col-reverse");
     outputEur.setAttribute("placeholder", "Enter amount in €");
@@ -111,3 +112,20 @@ function closeBackdrop() {
     backdrop[0].classList.add('invisible')
     backdrop[1].classList.add('invisible')
 }
+
+function getRate(currency){
+  var requestURL = 'https://api.exchangerate.host/latest';
+  var request = new XMLHttpRequest();
+  request.open('GET', requestURL);
+  request.responseType = 'json';
+  request.send();
+
+  request.onload = function() {
+    var response = request.response;
+    exchangeRate.innerText = parseFloat(response.rates[currency]).toFixed(2)
+  }
+}
+getRate('RSD')
+
+
+
